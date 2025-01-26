@@ -46,11 +46,15 @@ app.delete('/user/:id',(req,res)=>{
     // arr.splice(index2,1);
     // res.send({delete : "delete succesfully"});
 
-    let index = arr.filter(v => v.id === Number(req.params.id))
+    let index = arr.findIndex(v => v.id === Number(req.params.id))
     arr.splice(index,1)
-    
-    
 })
+
+app.put('/user/:id',(req,res)=>{
+  let index = arr.findIndex(v => v.id === Number(req.params.id))
+  arr.splice(index,1,{id :Number(req.params.id),...req.body})
+    res.send({delete : "edit succesfully"});
+  })
 
 app.listen(PORT, () => {
     console.log("server is running", `${PORT}`);
