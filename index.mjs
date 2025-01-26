@@ -28,11 +28,29 @@ app.get("/user", (req, res) => {
 
 app.post("/users",(req,res)=>{
     arr.push({id:arr.length + 1 ,...req.body});
-    // console.log(req.body);
     res.send(arr);
+    res.send("user added");
 })
 
+app.delete('/user/:id',(req,res)=>{
+  // let index = arr.findIndex(v => v.id === Number(req.params.id));
+  // if(index !== -1){
+  //     arr.splice(index,1)
+  //     res.send({delete : "delete succesfully"});
+  //   }else{
+  //     res.send({nfound : "user not found"});
+  //   }
 
+    // let index1 = Number(req.params.id);
+    // let index2 = arr.findIndex(v => v.id === index1)
+    // arr.splice(index2,1);
+    // res.send({delete : "delete succesfully"});
+
+    let index = arr.filter(v => v.id === Number(req.params.id))
+    arr.splice(index,1)
+    
+    
+})
 
 app.listen(PORT, () => {
     console.log("server is running", `${PORT}`);
