@@ -1,10 +1,12 @@
 import express from "express";
+import cors from 'cors';
 // const express =  require('express'); //es feature
 
 // body parser middle ware
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 // req.body ke ander data ata he
 
 const PORT = process.env.PORT || 3000;
@@ -26,10 +28,14 @@ app.get("/user", (req, res) => {
   res.send(arr);
 });
 
-app.post("/users",(req,res)=>{
-    arr.push({id:arr.length + 1 ,...req.body});
-    res.send(arr);
-    res.send("user added");
+// app.post("/users",(req,res)=>{
+//     arr.push({id:arr.length + 1 ,...req.body});
+//     res.send(arr);
+//     res.send("user added");
+// })
+app.post("/order",(req,res)=>{
+  console.log("data",req.body)
+    res.send("order recieved");
 })
 
 app.delete('/user/:id',(req,res)=>{
