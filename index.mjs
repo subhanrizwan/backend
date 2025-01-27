@@ -44,10 +44,10 @@ app.post("/users",(req,res)=>{
     res.status(401).send({status :401, err:"something went wrong"});
   }
 })
-// app.post("/order",(req,res)=>{
-//   console.log("data",req.body)
-//     res.send("order recieved");
-// })
+app.post("/order",(req,res)=>{
+  console.log("data",req.body)
+    res.send("order recieved");
+})
 
 app.delete('/user/:id',(req,res)=>{
   // let index = arr.findIndex(v => v.id === Number(req.params.id));
@@ -57,11 +57,6 @@ app.delete('/user/:id',(req,res)=>{
   //   }else{
   //     res.send({nfound : "user not found"});
   //   }
-
-    // let index1 = Number(req.params.id);
-    // let index2 = arr.findIndex(v => v.id === index1)
-    // arr.splice(index2,1);
-    // res.send({delete : "delete succesfully"});
 
     let index = arr.findIndex(v => v.id === Number(req.params.id))
     arr.splice(index,1)
