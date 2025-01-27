@@ -28,15 +28,26 @@ app.get("/user", (req, res) => {
   res.send(arr);
 });
 
-// app.post("/users",(req,res)=>{
-//     arr.push({id:arr.length + 1 ,...req.body});
-//     res.send(arr);
-//     res.send("user added");
-// })
-app.post("/order",(req,res)=>{
-  console.log("data",req.body)
-    res.send("order recieved");
+app.post("/users",(req,res)=>{
+  try{
+
+    let {name ,email} = req.body;
+    if(name.trim() && email.trim()){
+      arr.push({id:arr.length + 1 ,...req.body});
+      // res.send(arr);
+      res.status(200).send({status : 200 , message : "user added scuccesfully"});
+    }else{
+      res.status(403).send({status :403, message : "name and email is required"});
+    }
+  }
+  catch{
+    res.status(401).send({status :401, err:"something went wrong"});
+  }
 })
+// app.post("/order",(req,res)=>{
+//   console.log("data",req.body)
+//     res.send("order recieved");
+// })
 
 app.delete('/user/:id',(req,res)=>{
   // let index = arr.findIndex(v => v.id === Number(req.params.id));
@@ -54,12 +65,14 @@ app.delete('/user/:id',(req,res)=>{
 
     let index = arr.findIndex(v => v.id === Number(req.params.id))
     arr.splice(index,1)
+    res.send({delete : "delete succesfully"});
+
 })
 
 app.put('/user/:id',(req,res)=>{
   let index = arr.findIndex(v => v.id === Number(req.params.id))
   arr.splice(index,1,{id :Number(req.params.id),...req.body})
-    res.send({delete : "edit succesfully"});
+    res.send({Update : "user updated succesfully"});
   })
 
 app.listen(PORT, () => {
