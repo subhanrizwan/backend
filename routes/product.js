@@ -246,7 +246,7 @@ let Product = [
     ]
 
     router.get('/',(req,res)=>{
-        res.status(200).send({products : Product})
+        res.status(200).send({Products : Product})
     })
 
     export default router;

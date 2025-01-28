@@ -3,17 +3,21 @@ import cors from 'cors';
 import { error } from "console";
 import router from "./routes/index.js";
 // const express =  require('express'); //es feature
-
-// body parser middle ware
 const app = express();
 
 app.use(express.json());
 app.use(cors());
-// req.body ke ander data ata he
+// req.body ke ander data ata 
 
 const PORT = process.env.PORT || 3000;
 
+app.get('/',(req,res,next)=>{
+  console.log("aagayiiii request");
+  res.send();
+  next();
+})
 app.use('/api',router)
+
 app.listen(PORT, () => {
     console.log("server is running", `${PORT}`);
   });
