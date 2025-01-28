@@ -1,5 +1,6 @@
 import express from "express";
 import cors from 'cors';
+import { error } from "console";
 // const express =  require('express'); //es feature
 
 // body parser middle ware
@@ -30,18 +31,16 @@ app.get("/user", (req, res) => {
 
 app.post("/users",(req,res)=>{
   try{
-
     let {name ,email} = req.body;
     if(name.trim() && email.trim()){
       arr.push({id:arr.length + 1 ,...req.body});
-      // res.send(arr);
-      res.status(200).send({status : 200 , message : "user added scuccesfully"});
+      return res.status(200).send({status : 200 , message : "user added scuccesfully"});      
     }else{
-      res.status(403).send({status :403, message : "name and email is required"});
+      return res.status(403).send({status :403, message : "name and email is required"});
     }
   }
-  catch{
-    res.status(401).send({status :401, err:"something went wrong"});
+  catch (err){
+    return res.status(401).send({status :401, message : err.message});
   }
 })
 app.post("/order",(req,res)=>{
