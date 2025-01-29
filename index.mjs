@@ -1,5 +1,5 @@
 import express from "express";
-import cors from 'cors';
+import cors from "cors";
 import { error } from "console";
 import router from "./routes/index.js";
 // const express =  require('express'); //es feature
@@ -8,26 +8,26 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// req.body ke ander data ata 
+// req.body ke ander data ata
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 // middleware
-app.use('/',(req,res,next)=>{
-  console.log("request recieved",req.query);
-  if(req.query === "apiKey=123"){
-    res.send();
+app.use("/", (req, res, next) => {
+  if (req.query.apiKey === "123") {
     next();
-  }else{
-    res.send({message : "not allowed"})
+    console.log("request recieved", req.query);
+  } else {
+    res.send({ message: "not allowed" });
   }
-})
-app.use('/api',router)
+});
+
+app.use("/api", router);
 
 app.listen(PORT, () => {
-    console.log("server is running", `${PORT}`);
-  });
-  
+  console.log("server is running", `${PORT}`);
+});
+
 // let arr = [
 //   {
 //     id : 1,
@@ -50,7 +50,7 @@ app.listen(PORT, () => {
 //     let {name ,email} = req.body;
 //     if(name.trim() && email.trim()){
 //       arr.push({id:arr.length + 1 ,...req.body});
-//       return res.status(200).send({status : 200 , message : "user added scuccesfully"});      
+//       return res.status(200).send({status : 200 , message : "user added scuccesfully"});
 //     }else{
 //       return res.status(403).send({status :403, message : "name and email is required"});
 //     }
@@ -84,11 +84,6 @@ app.listen(PORT, () => {
 //   arr.splice(index,1,{id :Number(req.params.id),...req.body})
 //     res.send({Update : "user updated succesfully"});
 //   })
-
-
-
-
-
 
 //   client side send data mean post data
 // fetch("http://localhost:3000/users", {
