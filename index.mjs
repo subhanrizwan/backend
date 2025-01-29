@@ -7,14 +7,20 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+
 // req.body ke ander data ata 
 
 const PORT = process.env.PORT || 3000;
 
-app.get('/',(req,res,next)=>{
-  console.log("aagayiiii request");
-  res.send();
-  next();
+// middleware
+app.use('/',(req,res,next)=>{
+  console.log("request recieved",req.query);
+  if(req.query === "apiKey=123"){
+    res.send();
+    next();
+  }else{
+    res.send({message : "not allowed"})
+  }
 })
 app.use('/api',router)
 
