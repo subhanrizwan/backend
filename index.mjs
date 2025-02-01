@@ -8,9 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// req.body ke ander data ata
-
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 
 // middleware
 app.use("/", (req, res, next) => {
