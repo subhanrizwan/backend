@@ -1,14 +1,13 @@
 import express from "express";
 import cors from "cors";
-import { error } from "console";
 import router from "./routes/index.js";
-// const express =  require('express'); //es feature
+
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 4000;
 
 // middleware
 app.use("/", (req, res, next) => {
@@ -16,7 +15,7 @@ app.use("/", (req, res, next) => {
     next();
     console.log("request recieved", req.query);
   } else {
-    res.send({ message: "not allowed" });
+    res.status(200).send({status : 200, message: "not allowed" });
   }
 });
 
