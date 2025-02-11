@@ -19,6 +19,12 @@ app.use("/", (req, res, next) => {
   }
 });
 
+
+app.post('/',(req,res)=>{
+
+})
+
+
 app.use("/api", router);
 
 app.listen(PORT, () => {
