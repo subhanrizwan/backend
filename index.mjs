@@ -13,16 +13,11 @@ const PORT = process.env.PORT || 4000;
 app.use("/", (req, res, next) => {
   if (req.query.apiKey === "123") {
     next();
-    console.log("request recieved", req.query);
+    console.log("request recieve", req.query);
   } else {
     res.status(200).send({status : 200, message: "not allowed" });
   }
 });
-
-
-app.post('/',(req,res)=>{
-
-})
 
 
 app.use("/api", router);
@@ -34,7 +29,7 @@ app.listen(PORT, () => {
 // let arr = [
 //   {
 //     id : 1,
-//     name: "subhan ahmed",
+//     name: "Subhan Ahmed",
 //     email: "subhanahmed@gmail.com",
 //   },
 //   {
