@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import router from "./routes/index.js";
+// import router from "./routes/index.js";
 
 const app = express();
 
@@ -10,22 +10,68 @@ app.use(cors());
 const PORT = process.env.PORT || 4000;
 
 // middleware
-app.use("/", (req, res, next) => {
-  if (req.query.apiKey === "123") {
-    next();
-    console.log("request recieve", req.query);
-  } else {
-    res.status(200).send({status : 200, message: "not allowed" });
-  }
-});
+// app.use("/", (req, res, next) => {
+//   if (req.query.apiKey === "123") {
+//     next();
+//     console.log("request recieve", req.query);
+//   } else {
+//     res.status(200).send({status : 200, message: "not allowed" });
+//   }
+// });
 
 
-app.use("/api", router);
+// app.use("/api", router);
 
 app.listen(PORT, () => {
   console.log("server is running", `${PORT}`);
 });
 
+
+// practice
+let arr = [
+  {
+    name : "Subhan",
+    email : "subhan@gmail.com",
+    id  : 1,   
+  },
+  {
+    name : "Mubeen",
+    email : "mubeen@gmail.com",
+    id  : 2,   
+  }
+]
+
+app.get('/Users',(req,res)=>{
+res.send({Users : arr})
+})
+
+// app.post('/user', (req, res) => {
+//   arr.push({...req.body , id: arr.length + 1});
+//   res.send({ status : arr , message: "user added" });
+// });
+app.post('/order', (req, res) => {
+  console.log(req.body);
+  res.send({message: "order recieved" });
+});
+
+app.delete('/user/:id',(req,res)=>{
+    let index = arr.findIndex( v => v.id === Number(req.params.id))
+    if(index != -1){
+      arr.splice(index ,1)
+      res.status(200).send({status : 200, message: "user deleted"})
+    }else{
+      res.send({index , message: "user can't delete"}) 
+    }
+})
+app.put('/user/:id',(req,res)=>{
+    let index = arr.findIndex( v => v.id === Number(req.params.id))
+    arr.splice(index ,req.params.id,...req.body)
+  res.send({message: "user deleted"})
+})
+
+
+
+// Jab seekha tab ka kam
 // let arr = [
 //   {
 //     id : 1,
