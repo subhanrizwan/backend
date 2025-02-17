@@ -24,7 +24,6 @@ const upload = multer({ storage: storage })
     })
 
     router.delete('/',(req,res)=>{
-
         res.send({message : "delete"})
     })
 
