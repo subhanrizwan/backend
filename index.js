@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
-import mongoose from './db/index.js'
+// import mongoose from './db/index.js'
+import mongoose from "./db/index.js";
 import router from './routes/index.js'
 
 // import router from "./routes/index.js";
@@ -9,14 +10,17 @@ const PORT = process.env.PORT || 4000;
 
 // Connect to MongoDB
 const db = mongoose.connection;
-db.on("error",console.error.bind("Connection error"));
-db.once("open", function(){
-  console.log('Connected to MongoDB');
-});
+db.on('error', (e) => console.log(e));
+db.once('open', () => console.log('Successfully connected to MongoDB'));
 
 app.use(express.json());
 app.use(cors());
 
+app.use("/api", router);
+
+app.listen(PORT, () => {
+  console.log("server is running", `${PORT}`);
+});
 
 // middleware
 // app.use("/", (req, res, next) => {
@@ -27,14 +31,6 @@ app.use(cors());
 //     res.status(200).send({status : 200, message: "not allowed" });
 //   }
 // });
-
-
-app.use("/api", router);
-
-app.listen(PORT, () => {
-  console.log("server is running", `${PORT}`);
-});
-
 
 
 // practice

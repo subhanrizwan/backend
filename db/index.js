@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
 
-mongoose.connect("mongodb+srv://subhan:subhan@cluster0.s8chf.mongodb.net/practice?retryWrites=true&w=majority&appName=Cluster0");
+mongoose.connect("mongodb+srv://backend123:backend123@new.t0tsg.mongodb.net/SUBH?retryWrites=true&w=majority&appName=New");
 
 export default mongoose;
