@@ -1,16 +1,15 @@
 import express from "express";
 import cors from "cors";
-// import mongoose from './db/index.js'
 import mongoose from "./db/index.js";
 import router from './routes/index.js'
 
 // import router from "./routes/index.js";
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8000;
 
 // Connect to MongoDB
 const db = mongoose.connection;
-db.on('error', (e) => console.log(e));
+db.on("error", console.error.bind(console,"Connection error:") );
 db.once('open', () => console.log('Successfully connected to MongoDB'));
 
 app.use(express.json());
