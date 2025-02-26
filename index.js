@@ -1,16 +1,16 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "./db/index.js";
-import router from './routes/index.js'
+import router from "./routes/index.js";
 
 // import router from "./routes/index.js";
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 7000;
 
 // Connect to MongoDB
 const db = mongoose.connection;
-db.on("error", console.error.bind(console,"Connection error:") );
-db.once('open', () => console.log('Successfully connected to MongoDB'));
+db.on("error", console.error.bind(console, "Connection error:"));
+db.once("open", () => console.log("Successfully connected to MongoDB"));
 
 app.use(express.json());
 app.use(cors());
@@ -31,18 +31,17 @@ app.listen(PORT, () => {
 //   }
 // });
 
-
 // practice
 // let arr = [
 //   {
 //     name : "Subhan",
 //     email : "subhan@gmail.com",
-//     id  : 1,   
+//     id  : 1,
 //   },
 //   {
 //     name : "Mubeen",
 //     email : "mubeen@gmail.com",
-//     id  : 2,   
+//     id  : 2,
 //   }
 // ]
 
@@ -65,7 +64,7 @@ app.listen(PORT, () => {
 //       arr.splice(index ,1)
 //       res.status(200).send({status : 200, message: "user deleted"})
 //     }else{
-//       res.send({index , message: "user can't delete"}) 
+//       res.send({index , message: "user can't delete"})
 //     }
 // })
 // app.put('/user/:id',(req,res)=>{
@@ -73,8 +72,6 @@ app.listen(PORT, () => {
 //     arr.splice(index ,req.params.id,...req.body)
 //   res.send({message: "user deleted"})
 // })
-
-
 
 // Jab seekha tab ka kam
 // let arr = [
