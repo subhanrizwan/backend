@@ -5,7 +5,7 @@ import router from "./routes/index.js";
 
 // import router from "./routes/index.js";
 const app = express();
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 4000;
 
 // Connect to MongoDB
 const db = mongoose.connection;
