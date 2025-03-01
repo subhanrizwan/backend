@@ -2,15 +2,14 @@ import express from "express";
 import cors from "cors";
 import mongoose from "./db/index.js";
 import router from "./routes/index.js";
+import User from "./models/user.js";
 
-// import router from "./routes/index.js";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Connect to MongoDB
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "Connection error:"));
-db.once("open", () => console.log("Successfully connected to MongoDB"));
+mongoose.connection.on("error", console.error.bind(console, "Connection error:"));
+mongoose.connection.once("open", () => console.log("Connected to MongoDB"));
 
 app.use(express.json());
 app.use(cors());
