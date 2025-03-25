@@ -5,7 +5,7 @@ import router from "./routes/index.js";
 import User from "./models/user.js";
 
 const app = express();
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 4000;
 
 // Connect to MongoDB
 mongoose.connection.on("error", console.error.bind(console, "Connection error:"));
